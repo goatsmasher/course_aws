@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Course Assignment - Django</title>
+        <meta charset="UTF-8">
+        {% load staticfiles %}
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'main_app/css/index.css' %}" rel="stylesheet">
+    </head>
+    <body>
+        <div id="container">   
+            <div id="addcourse">
+                <form action="/add_course", method="post">
+                {% csrf_token %}
+                    <label for="new course form">Add a New Course</label><br>
+                    Name: <input type="text" name="name" value="">
+                    Description: <input type="textarea" name ="description"><br>
+                    <input id="add_button" type="submit" value="Add">
+                </form>
+            </div>
+            <div id="currentcourses">
+                <table>
+                    <tr>
+                        <th>Course Name</th>
+                        <th>Description</th>
+                        <th>Date Added</th>
+                        <th>Actions</th>
+                    </tr>
+                        {% if all_courses %}
+                        {% for course in all_courses %}
+                    <tr>
+                        <td>{{ course.name }}</td>
+                        <td>{{ course.description }}</td>
+                        <td>{{ course.created_at }}</td>
+                        <td><a href="/remove/{{course.id}}">Remove</a></td>
+                    </tr>
+                        {% endfor %}
+                        {% endif%}
+                </table>
+            </div>
+        </div>
+    </body>
+</html>

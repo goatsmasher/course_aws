@@ -1,0 +1,19 @@
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border: 1px solid black;
+    margin-bottom: 20px;
+    padding: 5px;
+}
+input {
+    font-size: 30px;
+}
+#back_button {
+    background-color: red;
+    margin-bottom: 10px;
+}
+#delete_button {
+    background-color: green;
+}
